@@ -201,7 +201,7 @@ function getAverageWordLength(array){
         totalCounts += array[i].split(' ').length;
     }
 
-    return Math.round(totalCounts / 30);
+    return Math.round(totalCounts / 31);
 
 }
 console.log(getAverageWordLength(originalFlavors));
