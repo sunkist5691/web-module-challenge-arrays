@@ -146,7 +146,7 @@ function copy(newArr, orgArr){
     return newArr;
 }
 
-console.log(copy('oldFlavors', originalFlavors));
+console.log(copy('newFlavors', originalFlavors));
 
 
 /* Task 7: July 7th is "World Chocolate Day" and Baskin Robins wants to create promotional materials highlighting all of their chocolate flavors. Write a function that checks every item in the array for a given string and returns a new array called filteredArray with just these values. Rather than hardcoding "chocolate" into your function, pass a string as a parameter, and invoke with the argument "chocolate". This way you could also filter for "Vanilla", "Sherbert", etc. when those holidays roll around.
@@ -288,30 +288,30 @@ var regionalFlavors = ["Pink Bubblegum",
     "Chocolate Chocolate Chip Cheesecake",
     "Caramel 'n' Cookies"]
 
-function getRandomFlavors(original, newone, seasonal, regional){
+    function getRandomFlavors(original, newone, seasonal, regional){
 
-    let combinations = [];
-    let allFlavors = [original, newone, seasonal, regional];
-
-    while (combinations.length !== 31) {
-
-        //Declarations
-        let num1 = Math.floor(Math.random() * allFlavors.length);
-        let num2 = Math.floor(Math.random() * allFlavors[num1].length);
-        let whatFlavor = allFlavors[num1][num2];
-        
-        //push each random flavors 
-        combinations.push(whatFlavor);
-
-        //delete from the list to prevent repetition of the flavors
-        allFlavors[num1].splice(num2, 1);
-
+        let combinations = [];
+    
+        let allFlavors = [...original, ...newone, ...seasonal, ...regional];
+    
+        while (combinations.length !== 31) {
+    
+            //Declarations
+            let num = Math.floor(Math.random() * allFlavors.length);
+            let randomFlavor = allFlavors[num];
+            
+            //push each random flavors 
+            combinations.push(randomFlavor);
+    
+            //delete from the list to prevent repetition of the flavors
+            allFlavors.splice(num, 1);
+    
+        }
+    
+        return combinations;
     }
-
-    return combinations;
-}
-
-console.log(getRandomFlavors([...originalFlavors], [...newFlavors], [...seasonalFlavors], [...regionalFlavors]));
+    
+    console.log(getRandomFlavors(originalFlavors, newFlavors, seasonalFlavors, regionalFlavors));
 
 //Check if the original array's are not deleted
-console.log(originalFlavors)
+console.log(originalFlavors);
